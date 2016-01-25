@@ -48,6 +48,7 @@ Dog rapidly moves toward the hero.
 2. Create a new file named `p2-lastname.java`  
     where **lastname** is  *YOUR* last name 
     *(first three or more letters)*
+
 # Object Oriented Design and Programming
 #### Write object classes for each of the the following:
 ```
