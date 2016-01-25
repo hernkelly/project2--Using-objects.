@@ -1,4 +1,4 @@
-# Project #2 -- Use objects to create a dynamic sketch.
+# Project #2 -- Use objects to create dynamic sketch.
 # Monster stalks the hero, who hunts for gold; dog follows hero.  
 
 
