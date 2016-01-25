@@ -42,6 +42,7 @@ Dog rapidly moves toward the hero.
 + monster slowly moves toward the hero.
 
 ----
+<FONT COLOR=`#FF0000">
 # Object Oriented Design and Programming
 #### Write object classes for each of the the following:
 ```
@@ -59,7 +60,7 @@ Dog rapidly moves toward the hero.
     }
 ```
 #### Write Java code to accomplish the above requirements.
-
+</FONT>
 
 ----
 
