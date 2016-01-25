@@ -28,7 +28,7 @@ Add titles and a score.
 Hero moves toward the gold.
 
 ## DOG:
-+ Body (low, brown rectangle)
++ body (low, brown rectangle)
 + head (small rectangle at one end) with eye
 + tail (sticking up at the other end.
 + legs sticking downward, at each end.  _(animated?)_
@@ -38,17 +38,26 @@ Dog rapidly moves toward the hero.
 + _(can you animate the legs?)_  
 
 ## MONSTER:
-+ Make up your own _(scary)_ shape
-+ Monster slowly moves toward the hero.
++ make up your own _(scary)_ shape
++ monster slowly moves toward the hero.
 
 ----
 # Object Oriented Design and Programming
 #### Write object classes for each of the the following:
-+ Gold
-+ Hero
-+ Dog
-+ Monster    
- 
+```
+class Gold { 
+... 
+}
+class Hero { 
+... 
+}
+class Dog { 
+... 
+}
+class Monster { 
+... 
+}
+```
 #### Write Java code to accomplish the above requirements.
 
 
