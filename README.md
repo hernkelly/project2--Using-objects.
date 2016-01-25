@@ -77,9 +77,7 @@ Dog rapidly moves toward the hero.
 4. Write Java code to accomplish the above requirements.
 5. Compile and test your code.
 6. Copy and paste your completed code into **`p2-lastname.java`**
-4. Write Java code to accomplish the above requirements.
-5. Compile and test your code.
-6. Copy and paste your completed code into **`p2-lastname.java`**
+4. 
 
 
                             NOTE:  THIS PROJECT DESCRIPTION IS INCOMPLETE!
