@@ -70,7 +70,7 @@ Dog rapidly moves toward the hero.
 
 # INSTRUCTIONS:
 1. Fork this "repo"
-2. Create a new file named **`p2-lastname.java`**
+2. Create a new file named **`p2-lastname.java`**  
     where **lastname** is  *YOUR* last name
     *(first three or more letters)*
 3. Write simple object classes for:  ```Gold, Hero, Dog, Monster```
