@@ -2,7 +2,7 @@
 Monster stalks the hero, who hunts for gold; dog follows hero
 
 # p2
-Project #2 -- create a dynamic sketch, including:
+Project #2 -- Use objects to create a dynamic sketch, including:
 + scene with sky, grass, sun, tree, and house,  
 + a hero who chases the gold,
 + a dog that follows the hero, and
@@ -32,6 +32,7 @@ Hero moves toward the gold.
 + head (small rectangle at one end) with eye
 + tail (sticking up at the other end.
 + legs sticking downward, at each end.  _(animated?)_
+
 Dog rapidly moves toward the hero.  
 + head should be at the front, tail at the back
 + _(can you animate the legs?)_  
@@ -40,13 +41,21 @@ Dog rapidly moves toward the hero.
 + Make up your own _(scary)_ shape
 + Monster slowly moves toward the hero.
 
+----
+# Object Oriented Design and Programming
+#### Write object classes for each of the the following:
++ Gold
++ Hero
++ Dog
++ Monster    
+ 
+#### Write Java code to accomplish the above requirements.
 
 
 ----
 
 # INSTRUCTIONS:
 1. Fork this "repo"  
-2. Create a new file named `p1-lastname`  
+2. Create a new file named `p2-lastname.java`  
     where **lastname** is  *YOUR* last name 
     *(first three or more letters)*
-
