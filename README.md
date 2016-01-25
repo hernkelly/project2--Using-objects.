@@ -45,18 +45,18 @@ Dog rapidly moves toward the hero.
 # Object Oriented Design and Programming
 #### Write object classes for each of the the following:
 ```
-class Gold { 
-... 
-}
-class Hero { 
-... 
-}
-class Dog { 
-... 
-}
-class Monster { 
-... 
-}
+    class Gold { 
+        //... 
+    }
+    class Hero { 
+        //... 
+    }
+    class Dog { 
+        //... 
+    }
+    class Monster { 
+        //... 
+    }
 ```
 #### Write Java code to accomplish the above requirements.
 
