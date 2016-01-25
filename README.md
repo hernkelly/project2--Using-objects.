@@ -1,8 +1,8 @@
-# p2:    Monster chases hero.
-Monster stalks the hero, who hunts for gold; dog follows hero
+# p2:    Project #2 -- Use objects to create a dynamic sketch.
 
-# p2
-Project #2 -- Use objects to create a dynamic sketch, including:
+# Monster stalks the hero, who hunts for gold; dog follows hero
+
+## Project #2 -- Use objects to create a dynamic sketch, including:
 + scene with sky, grass, sun, tree, and house,  
 + a hero who chases the gold,
 + a dog that follows the hero, and
