@@ -76,7 +76,7 @@ Dog rapidly moves toward the hero.
 3. Write simple object classes for:  ```Gold, Hero, Dog, Monster```
 4. Write Java code to accomplish the above requirements.
 5. Compile and test your code.
-6. Copy and paste your completed code into your  `p2-lastname.java`  file on Github. 
+6. Copy and paste your completed code into `p2-lastname.java`
 
 
                             NOTE:  THIS PROJECT DESCRIPTION IS INCOMPLETE!
