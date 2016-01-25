@@ -1,16 +1,16 @@
 # Project #2 -- Use objects to create dynamic sketch.
-# Monster stalks the hero, who hunts for gold; dog follows hero.  
+# Monster stalks the hero, who hunts for gold.
 
+#### Write simple object classes for ```Gold, Hero, Dog, Monster```  
+####_(then write code to accomplish other requirements described below)_
 
                             NOTE:  THIS PROJECT DESCRIPTION IS INCOMPLETE!
                             DO NOT USE THESE INSTRUCTION UNTIL PROJECT IS ASSIGNED.
 
 
-#### Write simple object classes for ```Gold, Hero, Dog, Monster```  
-####_(then write code to accomplish other requirements described below)_
 
 
-### Project #2 -- Use objects to create a dynamic sketch, including:
+## Project #2 -- Use objects to create a dynamic sketch, including:
 + scene with sky, grass, sun, tree, and house,  
 + a hero who chases the gold,
 + a dog that follows the hero, and
@@ -69,12 +69,11 @@ Dog rapidly moves toward the hero.
 ```
 
 # INSTRUCTIONS:
-1. Fork this "repo"  
-2. Create a new file named `p2-lastname.java`  
-    where **lastname** is  *YOUR* last name 
-    *(first three or more letters)*  
-
-3. Write simple object classes for:  ```Gold, Hero, Dog, Monster```  
+1. Fork this "repo"
+2. Create a new file named `p2-lastname.java`
+    where **lastname** is  *YOUR* last name
+    *(first three or more letters)*
+3. Write simple object classes for:  ```Gold, Hero, Dog, Monster```
 4. Write Java code to accomplish the above requirements.
 5. Compile and test your code.
 6. Copy and paste your completed code into your  `p2-lastname.java`  file on Github. 
