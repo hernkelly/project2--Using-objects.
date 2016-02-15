@@ -13,7 +13,8 @@
 ## Project #2 -- Use objects to create a dynamic sketch, including:
 + scene with sky, grass, sun, tree, and house,  
 + a hero who chases the gold,
-+ a dog that follows the hero, and
++ a dog that follows the hero,
++ a puppy that follows the dog, and
 + a monster that slowly chases the hero.
 Add titles and a score.  
 **NOTE:**  All requirements from Project #1 also apply to Project #2.  
@@ -43,7 +44,10 @@ Hero moves toward the gold.
 
 Dog rapidly moves toward the hero.  
 + head should be at the front, tail at the back
-+ _(can you animate the legs?)_  
++ _(can you animate the legs?)_ 
+
+## PUPPY:
+Puppy is a small Dog object that chases the big dog.
 
 ## MONSTER:
 + make up your own _(scary)_ shape
@@ -76,7 +80,7 @@ Dog rapidly moves toward the hero.
 4. Write Java code to accomplish the above requirements.
 5. Compile and test your code.
 6. Copy and paste your completed code into **`p2-lastname.java`**
-4. 
+ 
 
 
                             NOTE:  THIS PROJECT DESCRIPTION IS INCOMPLETE!
