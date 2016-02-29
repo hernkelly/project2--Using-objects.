@@ -27,7 +27,7 @@ Add titles and a score.
 + house -- with roof, door, and windows
 
 ## GOLD
-+ A sparkling gold nugget appears at mouse position (mouseX,mouseY) when mouse is clicked
++ A sparkling gold nugget appears at a random position.
 
 ## HERO
 + shirt with name on it
