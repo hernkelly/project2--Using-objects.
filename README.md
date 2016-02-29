@@ -82,7 +82,7 @@ Puppy is a small Dog object that chases the big dog.
     where **lastname** is  *YOUR* last name *(first three or more letters)*
 3. Write simple object classes for:  ```Gold, Hero, Dog, Monster```
 4. Make up your own names for the Hero and the Monster.  
-      _(Do **NOT** use **mickey** or **darth* for your variable namess.)_
+      _(Do **NOT** use **mickey** or **darth* for your variable names.)_
 5. Write Java code to accomplish the above requirements.
 6. Compile and test your code.
 7. Copy and paste your completed code into **`p2-lastname.java`**
