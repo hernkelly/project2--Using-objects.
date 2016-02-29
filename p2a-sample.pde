@@ -37,8 +37,19 @@ void reset() {
 //// NEXT FRAME:  scene, show, action, messages ////
 void draw() {
   scene();
-  show();
-  action();
+  if (score > -1000) {
+    show();
+    action();
+  } else {
+    textSize( 30 );
+    fill( 255, 0, 255 );
+    text( "G A M E    O V E R", width/3, height/2 );
+    textSize( 12 );
+    fill( 255, 0, 255 );
+    text( "Press 'g' key for new game.", width/2, 50+height/2 );
+    return;
+  } 
+    
   credits();
 }
 
@@ -58,8 +69,7 @@ void scene() {
     xSun=  20;
     ySun=  random( 20, horizon-20 );
     dxSun=  random( 0.5, 4 );
-    score -= 25;
-    // Lose 25 points per day!
+    score -= 25;                      // Lose 25 points per day!
   }
 }
 
