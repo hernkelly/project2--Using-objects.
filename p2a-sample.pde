@@ -56,6 +56,7 @@ void draw() {
 void help() {
   fill(0);
   text( "q to quit; r to reset; g for new game.", width/3, height/2 );
+  text( "Click the mouse to reposition the hero.", width/3, 15+height/2 );
 }
 
 //// SCENE:  sun, tree, house. ////
@@ -132,6 +133,7 @@ void credits() {
   text( " -10 per day.  -25 to reset.", width*2/3, 105 );
   //
   text( author, 10, height-10 );
+  text( "Click mouse to reposition hero.", width/2, height-20 );
   text( "q to quit; r to reset; g for new game.", width/2, height-10 );
 }
 
