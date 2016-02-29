@@ -1,7 +1,7 @@
-//// Project p2a-sample:  Converting to objects.
+//// Project 1x - Converting to objects.
 
-String title="Project #2 sample code -- (start using objects)";
-String author="B.A.Martin; 2016/2/29";
+String title="Project #1x (start using objects)";
+String author="Bruce Alan Martin; 2016/2/29";
 
 //// GLOBAL DECLARATIONS ////
 float horizon;
