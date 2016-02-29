@@ -33,6 +33,11 @@ void reset() {
 
 //// NEXT FRAME:  scene, show, action, messages ////
 void draw() {
+  background( 150, 200, 240 );            // blue sky  
+  if (key == '?') {
+    help();
+    return;
+  }
   scene();
   if (score < -500) {
     textSize( 30 );
@@ -40,17 +45,21 @@ void draw() {
     text( "G A M E    O V E R", width/3, height/2 );
     textSize( 12 );
     fill( 255, 0, 255 );
-    text( "Press 'g' key for new game.", width/2, 50+height/2 );
+    text( "Press 'g' key for new game.", width/2, 100+height/2 );
     return;
-  } 
+  }
   show();
   action();
   credits();
 }
+// Display help messages.
+void help() {
+  fill(0);
+  text( "q to quit; r to reset; g for new game.", width/3, height/2 );
+}
 
-//// SCENE:  sky, sun, tree, house. ////
+//// SCENE:  sun, tree, house. ////
 void scene() {
-  background( 150, 200, 240 );            // blue sky
   noStroke();
   fill( 255, 255, 0 );                   // yellowish sun.
   ellipse( xSun, ySun, 30, 30 );
