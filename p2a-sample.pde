@@ -1,4 +1,4 @@
-//// Project 1x - Converting to objects.
+//// Project p2a-sample:  Converting to objects.
 
 String title="Project #2 sample code -- (start using objects)";
 String author="B.A.Martin; 2016/2/29";
