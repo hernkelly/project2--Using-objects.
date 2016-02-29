@@ -154,7 +154,9 @@ void credits() {
 
 //// EVENT HANDLERS ////
 void keyPressed() {
-  if (key == 'q') {  exit();  }
+  if (key == 'q') {  
+    exit();
+  }
   if (key == 'r') { 
     reset();
     score -= 25;
@@ -166,7 +168,18 @@ void keyPressed() {
     score=0;
     reset();
   }
-  if (key == 'x') {  score -= 200;  }
+  if (key == 'x') {  
+    score -= 200;
+  }
+  // Metals.
+  if (key == 's') { 
+    silver.x=  random( 100, width-100 );
+    silver.y=  random( horizon+20, height-20 );
+  }
+  if (key == 'u') { 
+    uranium.x=  random( 100, width-100 );
+    uranium.y=  random( horizon+20, height-20 );
+  }
 }
 void mousePressed() {
   mickey.x=  mouseX;
@@ -218,8 +231,12 @@ class Hero
   }
   // Move the hero; bounce off walls.
   void move() {
-    if (x>width || x<0) { dx= -dx; }
-    if (y>height || y<horizon) {  dy= -dy; }
+    if (x>width || x<0) { 
+      dx= -dx;
+    }
+    if (y>height || y<horizon) {  
+      dy= -dy;
+    }
     x += dx;
     y += dy;
   }
@@ -252,8 +269,12 @@ class Monster
   }
   // Move & bounce off walls.
   void move() {
-    if (x>width || x<0) { dx= -dx; }
-    if (y>height || y<horizon) {  dy= -dy; }
+    if (x>width || x<0) { 
+      dx= -dx;
+    }
+    if (y>height || y<horizon) {  
+      dy= -dy;
+    }
     x += dx;
     y += dy;
   }
