@@ -1,6 +1,6 @@
-//// Project 1x - Converting to objects.
+//// Project 2 - Converting to objects.
 
-String title="Project #1x (start using objects)";
+String title="Project #2a (start using objects)";
 String author="Bruce Alan Martin; 2016/2/29";
 
 //// GLOBAL DECLARATIONS ////
@@ -46,7 +46,7 @@ void draw() {
 void scene() {
   background( 150, 200, 240 );            // blue sky
   noStroke();
-  fill( 240, 200, 50 );                   // yellowish sun.
+  fill( 255, 255, 0 );                   // yellowish sun.
   ellipse( xSun, ySun, 30, 30 );
   fill( 50, 200, 100 );                   // greenish grass
   rectMode( CORNER );
