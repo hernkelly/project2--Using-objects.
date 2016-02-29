@@ -1,4 +1,4 @@
-# Project #2 -- Use objects to create dynamic sketch.
+# Project #2 -- Use objects for a dynamic sketch.
 # Monster stalks the hero, who hunts for gold.
 
 #### Write simple object classes for ```Gold, Hero, Dog, Monster```  
@@ -53,6 +53,10 @@ Puppy is a small Dog object that chases the big dog.
 + make up your own _(scary)_ shape
 + monster slowly moves toward the hero.
 
+## SCORE:
++ Display a score for this game.
++ Change the score for various events _(such as monster catches hero, etc.)_
+
 ----
 
 # Object Oriented Design and Programming
@@ -77,9 +81,11 @@ Puppy is a small Dog object that chases the big dog.
 2. Create a new file named **`p2-lastname.java`**  
     where **lastname** is  *YOUR* last name *(first three or more letters)*
 3. Write simple object classes for:  ```Gold, Hero, Dog, Monster```
-4. Write Java code to accomplish the above requirements.
-5. Compile and test your code.
-6. Copy and paste your completed code into **`p2-lastname.java`**
+4. Make up your own names for the Hero and the Monster.  
+      _(Do **NOT** use **mickey** or **darth* for your variable namess.)_
+5. Write Java code to accomplish the above requirements.
+6. Compile and test your code.
+7. Copy and paste your completed code into **`p2-lastname.java`**
  
 
 
