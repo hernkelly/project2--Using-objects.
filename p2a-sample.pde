@@ -8,7 +8,7 @@ float horizon;
 float xSun=50, ySun=50, dxSun=2;
 int score=0, total=0, game=1;
 
-Gold nugget;
+Nugget gold;
 Hero mickey;
 Monster darth;
 
@@ -18,7 +18,7 @@ void setup() {
   size( 800, 600 );
   horizon=  height/4;
   // Instantiate the objects: gold, hero, monster.
-  nugget=  new Gold();
+  gold=  new Nugget();
   mickey= new Hero();
   darth= new Monster();
   reset();
@@ -27,8 +27,8 @@ void reset() {
   mickey.reset();
   darth.reset();
   // Place gold at random position.
-  nugget.x=  random( 100, width-100 );
-  nugget.y=  random( horizon+20, height-20 );
+  gold.x=  random( 100, width-100 );
+  gold.y=  random( horizon+20, height-20 );
 }
 
 //// NEXT FRAME:  scene, show, action, messages ////
@@ -55,8 +55,8 @@ void draw() {
 // Display help messages.
 void help() {
   fill(0);
-  text( "q to quit; r to reset; g for new game.", width/3, height/2 );
-  text( "Click the mouse to reposition the hero.", width/3, 15+height/2 );
+  text( "Click the mouse to reposition the hero.", width/3, height/2 );
+  text( "q to quit; r to reset; g for new game.", width/3, 15+height/2 );
 }
 
 //// SCENE:  sun, tree, house. ////
@@ -81,7 +81,7 @@ void scene() {
 //// SHOW:  display the creatures, etc.
 void show() {
   // ++++ ADD CODE HERE +++
-  nugget.show();
+  gold.show();
   mickey.show();
   darth.show();
 }
@@ -89,7 +89,7 @@ void show() {
 //// ACTION:  move the creatures, etc.
 void action() {
   // Check for collisions.
-  if ( dist( mickey.x, mickey.y, nugget.x, nugget.y )  < 50 ) {
+  if ( dist( mickey.x, mickey.y, gold.x, gold.y )  < 50 ) {
     //// Hero got the gold!
     score=  score + 100;
     reset();
@@ -100,10 +100,10 @@ void action() {
     reset();
   }
   // Change speeds, to chase.
-  if (nugget.y>horizon) {
+  if (gold.y>horizon) {
     // Hero chases gold.
-    mickey.dx=  (nugget.x - mickey.x) / frameRate;
-    mickey.dy=  (nugget.y - mickey.y) / frameRate;
+    mickey.dx=  (gold.x - mickey.x) / frameRate;
+    mickey.dy=  (gold.y - mickey.y) / frameRate;
     // Monster chases hero.
     darth.dx=  (mickey.x - darth.x) / frameRate;
     darth.dy=  (mickey.y - darth.y) / frameRate;
@@ -133,8 +133,7 @@ void credits() {
   text( " -10 per day.  -25 to reset.", width*2/3, 105 );
   //
   text( author, 10, height-10 );
-  text( "Click mouse to reposition hero.", width/2, height-20 );
-  text( "q to quit; r to reset; g for new game.", width/2, height-10 );
+  text( "q to quit; r to reset; g for new game, ? for help", width/2, height-10 );
 }
 
 //// EVENT HANDLERS ////
@@ -160,15 +159,15 @@ void mousePressed() {
 }
 
 
-//// OBJECTS:  Gold, Hero, Monster. ////
+//// OBJECTS:  Nugget, Hero, Monster. ////
 
-class Gold {
+class Nugget {
   float x=0, y=0;
-  // Display the (sparkling) gold, if y is below the horizon. //
+  // Display the (sparkling metal, if y is below the horizon. //
   void show() {
     if (y < horizon) { 
       return;
-    }    // No gold.
+    }    // Not visible.
     fill( random(240, 250), random(120, 150), random(0, 100) );
     stroke( random(250), random(150), 0 );
     ellipse( x, y, 50+random(-3, +3), 30+random(-1, +1) );
