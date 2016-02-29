@@ -5,15 +5,12 @@ String author="Bruce Alan Martin; 2016/2/29";
 
 //// GLOBAL DECLARATIONS ////
 float horizon;
+float xSun=50, ySun=50, dxSun=2;
 int score=0, total=0, game=1;
 
 Gold nugget;
 Hero mickey;
 Monster darth;
-
-// Position & speed of creatures, etc.
-//
-float xSun=50, ySun=50, dxSun=2;
 
 
 //// SETUP ////
@@ -37,10 +34,7 @@ void reset() {
 //// NEXT FRAME:  scene, show, action, messages ////
 void draw() {
   scene();
-  if (score > -1000) {
-    show();
-    action();
-  } else {
+  if (score < -500) {
     textSize( 30 );
     fill( 255, 0, 255 );
     text( "G A M E    O V E R", width/3, height/2 );
@@ -49,7 +43,8 @@ void draw() {
     text( "Press 'g' key for new game.", width/2, 50+height/2 );
     return;
   } 
-    
+  show();
+  action();
   credits();
 }
 
@@ -133,9 +128,7 @@ void credits() {
 
 //// EVENT HANDLERS ////
 void keyPressed() {
-  if (key == 'q') { 
-    exit();
-  }
+  if (key == 'q') {  exit();  }
   if (key == 'r') { 
     reset();
     score -= 25;
@@ -147,6 +140,7 @@ void keyPressed() {
     score=0;
     reset();
   }
+  if (key == 'x') {  score -= 200;  }
 }
 void mousePressed() {
   mickey.x=  mouseX;
@@ -154,54 +148,51 @@ void mousePressed() {
   score -= 50;
 }
 
+
 //// OBJECTS:  Gold, Hero, Monster. ////
 
 class Gold {
   float x=0, y=0;
   // Display the (sparkling) gold, if y is below the horizon. //
   void show() {
-    // Gold.
-    if (y > horizon) { 
-      fill( random(240, 250), random(120, 150), random(0, 100) );
-      stroke( random(250), random(150), 0 );
-      ellipse( x, y, 50+random(-3, +3), 30+random(-1, +1) );
-    }
+    if (y < horizon) { 
+      return;
+    }    // No gold.
+    fill( random(240, 250), random(120, 150), random(0, 100) );
+    stroke( random(250), random(150), 0 );
+    ellipse( x, y, 50+random(-3, +3), 30+random(-1, +1) );
   }
 }
 
-
 class Hero
 {
-  // PROPERTIES //
-  float x, y, dx, dy;          // Coordinates & speed.
+  //// PROPERTIES ////
+  float x, y, dx, dy;        // Coordinates & speed.
   float w=50, h=80;          // Dimensions of hero (small).
   float hHead= w * 2/3;      // Head height.
   float r=200, g=50, b=50;   // Color of hero
 
-  // METHODS //
+  //// METHODS ////
+  // (Mickey starts at left.)
   void reset() {
-    // (Mickey starts at left.)
     mickey.x=  50;
     mickey.y=  horizon+50;
     dx=5;
     dy=3;                    // (fast)
   }
-  //// Display the hero;
+  // Display the hero;
   void show() {
     fill( r, g, b );
     rectMode( CENTER );
     rect( x, y, w, h );
-    fill( r+50, g+50, b+50 );            // Lighter face.
+    // Lighter face.
+    fill( r+50, g+50, b+50 );
     ellipse( x, y-h/2-hHead/2, hHead-10, hHead );
   }
-  //// Move the hero; bounce off walls.
+  // Move the hero; bounce off walls.
   void move() {
-    if (x>width || x<0) { 
-      dx= -dx;
-    }
-    if (y>height || y<horizon) { 
-      dy= -dy;
-    }
+    if (x>width || x<0) { dx= -dx; }
+    if (y>height || y<horizon) {  dy= -dy; }
     x += dx;
     y += dy;
   }
@@ -209,37 +200,33 @@ class Hero
 
 class Monster
 {
-  // PROPERTIES //
+  //// PROPERTIES ////
   float x, y, dx, dy;          // Coordinates & speed.
   float w=90, h=150;         // Dimensions of mosnter (big).
   float hHead= w * 2/3;      // Head height.
   float r=20, g=100, b=50;   // Color of monster (dark);
 
-  // METHODS //
+  //// METHODS ////
+  // (Monster starts at right.)
   void reset() {
-    // (Monster starts at right.)
     darth.x=  width-50;
     darth.y=  height-50;
     dx=2;                    // Speed (slow).
     dy=1;
   }
-
-  //// Display the monster;
+  // Display the monster;
   void show() {
     fill( r, g, b );
     rectMode( CENTER );
     rect( x, y, w, h );
-    fill( r+50, g+50, b+50 );            // Lighter face.
+    // Lighter face.
+    fill( r+50, g+50, b+50 );
     ellipse( x, y-h/2-hHead/2, hHead-10, hHead );
   }
-  //// Move & bounce off walls.
+  // Move & bounce off walls.
   void move() {
-    if (x>width || x<0) { 
-      dx= -dx;
-    }
-    if (y>height || y<horizon) { 
-      dy= -dy;
-    }
+    if (x>width || x<0) { dx= -dx; }
+    if (y>height || y<horizon) {  dy= -dy; }
     x += dx;
     y += dy;
   }
