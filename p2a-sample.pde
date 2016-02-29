@@ -8,7 +8,7 @@ float horizon;
 float xSun=50, ySun=50, dxSun=2;
 int score=0, total=0, game=1;
 
-Nugget gold;
+Nugget gold, silver, uranium;
 Hero mickey;
 Monster darth;
 
@@ -18,17 +18,31 @@ void setup() {
   size( 800, 600 );
   horizon=  height/4;
   // Instantiate the objects: gold, hero, monster.
-  gold=  new Nugget();
   mickey= new Hero();
   darth= new Monster();
+  gold=  new Nugget();
+  // More metals.
+  silver=  new Nugget();
+  silver.r= 180; 
+  silver.g= 180; 
+  silver.b= 200; 
+  uranium=  new Nugget();
+  uranium.r= 200; 
+  uranium.g= 50; 
+  uranium.b= 100; 
   reset();
 }
 void reset() {
   mickey.reset();
   darth.reset();
-  // Place gold at random position.
+  // Place metals at random position.
   gold.x=  random( 100, width-100 );
   gold.y=  random( horizon+20, height-20 );
+  //
+  silver.x=  random( 100, width-100 );
+  silver.y=  random( horizon+20, height-20 );
+  uranium.x=  random( 100, width-100 );
+  uranium.y=  random( horizon+20, height-20 );
 }
 
 //// NEXT FRAME:  scene, show, action, messages ////
@@ -80,10 +94,12 @@ void scene() {
 
 //// SHOW:  display the creatures, etc.
 void show() {
-  // ++++ ADD CODE HERE +++
-  gold.show();
   mickey.show();
   darth.show();
+  //
+  gold.show();
+  silver.show();
+  uranium.show();
 }
 
 //// ACTION:  move the creatures, etc.
@@ -163,13 +179,14 @@ void mousePressed() {
 
 class Nugget {
   float x=0, y=0;
+  float r=220, g=120, b=50;
   // Display the (sparkling metal, if y is below the horizon. //
   void show() {
     if (y < horizon) { 
       return;
     }    // Not visible.
-    fill( random(240, 250), random(120, 150), random(0, 100) );
-    stroke( random(250), random(150), 0 );
+    fill( r+random(25), g+random(25), b+random(25) );
+    stroke( r+random(-25, +25), g+random(-25, +25), b+random(-25, +25) );
     ellipse( x, y, 50+random(-3, +3), 30+random(-1, +1) );
   }
 }
