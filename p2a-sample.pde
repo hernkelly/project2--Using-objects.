@@ -18,7 +18,7 @@ float xSun=50, ySun=50, dxSun=2;
 
 //// SETUP ////
 void setup() {
-  size( 640, 480 );
+  size( 800, 600 );
   horizon=  height/4;
   // Instantiate the objects: gold, hero, monster.
   nugget=  new Gold();
@@ -147,7 +147,7 @@ class Gold {
   void show() {
     // Gold.
     if (y > horizon) { 
-      fill( random(240, 250), random(150, 180), random(0, 100) );
+      fill( random(240, 250), random(120, 150), random(0, 100) );
       stroke( random(250), random(150), 0 );
       ellipse( x, y, 50+random(-3, +3), 30+random(-1, +1) );
     }
