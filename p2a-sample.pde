@@ -138,6 +138,11 @@ void keyPressed() {
     reset();
   }
 }
+void mousePressed() {
+  mickey.x=  mouseX;
+  mickey.y=  mouseY;
+  score -= 50;
+}
 
 //// OBJECTS:  Gold, Hero, Monster. ////
 
