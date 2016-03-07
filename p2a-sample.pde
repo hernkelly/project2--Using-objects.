@@ -215,8 +215,8 @@ class Hero
   //// METHODS ////
   // (Mickey starts at left.)
   void reset() {
-    mickey.x=  50;
-    mickey.y=  horizon+50;
+    x=  50;
+    y=  horizon+50;
     dx=5;
     dy=3;                    // (fast)
   }
@@ -253,8 +253,8 @@ class Monster
   //// METHODS ////
   // (Monster starts at right.)
   void reset() {
-    darth.x=  width-50;
-    darth.y=  height-50;
+    x=  width-50;
+    y=  height-50;
     dx=2;                    // Speed (slow).
     dy=1;
   }
