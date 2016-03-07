@@ -41,6 +41,7 @@ void setup() {
 }
 void reset() {
   mickey.reset();
+  minnie.reset();
   //
   darth.reset();
   // Place metals at random position.
