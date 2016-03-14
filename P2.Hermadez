@@ -15,10 +15,8 @@ float goldB;
 float windR;
 float windG;
 float windB;
-float xDog=200;  
-float yDog=300;
-float xPuppie=175;  
-float yPuppie=325;
+float xDog=200,  yDog=300;
+float xPuppie=175, yPuppie=325;
 ///SET UP: Define screen size, set modes 
 void setup() {
   size( 500, 500);
@@ -36,6 +34,7 @@ void draw() {
   moveChee();
   monster();
   dog();
+  moveDog();
   puppie();
 
 
@@ -50,8 +49,8 @@ void scene() {
   fill(62, 199, 50);
   rect(0, 249, 500, 250, 2);       //x,y,width,height,radius 1/2 background 
 
-  // Draw a pink house, with roof. 
-
+  
+//SET RANDOM COLOS FOR THE WINDOWS
   windR = random(100);
   windG = random(100);
   windB = random(100);
@@ -115,10 +114,10 @@ void chee () {    ///move creature
   arc( xChee+10, yChee -20, 40, 40, PI, TWO_PI); // Head 
   fill(255, 0, 0); // red eyes 
   noStroke(); 
-
-  float x, y;
+float x, y;
   x= xChee;
   y= yChee;
+  
 
   ellipse( x+15, y-25, 12, 12 ); // Eyes 
   ellipse( x+35, y-25, 12, 12 ); 
@@ -156,7 +155,7 @@ void sun() {
   ellipseMode(CORNER);
   ellipse(sunx, suny, 60, 60);    //sun position
   //sun motion
-  suny = sunH + (-50 * sin ((sunx+200) /(width/ PI )));     //sun arches though sky to horizon
+  suny = sunH + (-50 * sin ((sunx+200) /(width/ PI )));     //sun arches though sky to horizon//  sunset=(150 + cos(sunX*.009)*125);
   if (sunx > width) {   //makes the sun move though the x axis
     sunx=-10;
     suny= random(210, 240); // moves he sun slighly up and down
@@ -208,6 +207,13 @@ void dog() {
   line(xDog+10, yDog+20, xDog+10, yDog+30);
   line(xDog+30, yDog+20, xDog+30, yDog+30);
 } 
+
+void moveDog() {
+    xDog = xDog + (xChee-xDog) / 50;
+  yDog = yDog + (yChee-yDog)/ 50;
+
+  
+}
 //175,325
 void puppie() { 
   fill(0, 150, 90);
