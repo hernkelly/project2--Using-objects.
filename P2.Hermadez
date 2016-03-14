@@ -15,6 +15,10 @@ float goldB;
 float windR;
 float windG;
 float windB;
+float xDog=200;  
+float yDog=300;
+float xPuppie=175;  
+float yPuppie=325;
 ///SET UP: Define screen size, set modes 
 void setup() {
   size( 500, 500);
@@ -188,34 +192,34 @@ void monster() {
   fill(255);
   text("Jume", 355, 390);      /// Jume monster naem
 }
-
+//200,300
 void dog() {
   //rect(80,400,25,15);
   //rect(60,415,30,10);
   //Monster stalks the hero, who hunts for gold
   fill(200, 150, 90);
-  rect(200, 300, 45, 20);        //drawing the dog body
-  rect(245, 290, 20, 20);//head
+  rect(xDog, yDog, 45, 20);        //drawing the dog body
+  rect(xDog+45, yDog-10, 20, 20);//head
   fill(0);
-  ellipse(265, 305, 5, 5);      //nose
+  ellipse(xDog+65, yDog+5, 5, 5);      //nose
   fill(0);
-  ellipse(195, 280, 5, 25);  //tail
+  ellipse(xDog-5, yDog-20, 5, 25);  //tail
   stroke(0);
-  line(210, 320, 210, 330);
-  line(230, 320, 230, 330);
+  line(xDog+10, yDog+20, xDog+10, yDog+30);
+  line(xDog+30, yDog+20, xDog+30, yDog+30);
 } 
-
+//175,325
 void puppie() { 
   fill(0, 150, 90);
-  rect(175, 325, 10, 10);        //drawing the dog head
-  rect(155, 330, 20, 10);//body
+  rect(xPuppie, yPuppie, 10, 10);        //drawing the dog head
+  rect(xPuppie-20, yPuppie+5, 20, 10);//body
   fill(0);
-  ellipse(185, 333, 3, 3);      //nose
+  ellipse(xPuppie+10, yPuppie+8, 3, 3);      //nose
   fill(0);
-  ellipse(152, 322, 3, 10);  //tail
+  ellipse(xPuppie-23, yPuppie-3, 3, 10);  //tail
   stroke(0);
-  line(160, 340, 160, 345);
-  line(170, 340, 170, 345);
+  line(xPuppie-15, yPuppie+15, xPuppie-15, yPuppie+20);
+  line(xPuppie-5, yPuppie+15, xPuppie-5, yPuppie+20);
 }
 
 void mousePressed() {
@@ -236,6 +240,3 @@ void message() {
   fill(0);
   text (score, width/2, 250);
 }
-
-
-
