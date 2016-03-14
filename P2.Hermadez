@@ -1,0 +1,241 @@
+// Kelly hernandez
+///Draw creature and add motion to the design
+float xChee=70, yChee=350, dxChee=.5, dyChee=.5;
+float horizon;
+float sunx= 430;
+float suny=100;
+float xNugget=125; 
+float yNugget=300;
+int score = 8;
+float cloud=100;
+float sunH= 100;
+float goldR;
+float goldG;
+float goldB;
+float windR;
+float windG;
+float windB;
+///SET UP: Define screen size, set modes 
+void setup() {
+  size( 500, 500);
+  horizon=  height / 3;   //bounces off the horizon
+}
+
+void draw() {
+  background(100, 200, 200 );
+  sun();
+  cloud();
+  scene();
+  chee();
+  nugget();
+  message();
+  moveChee();
+  monster();
+  dog();
+  puppie();
+
+
+  /* monster();*/
+}
+
+void scene() {
+
+  rectMode(CORNER);
+
+  // the sky
+  fill(62, 199, 50);
+  rect(0, 249, 500, 250, 2);       //x,y,width,height,radius 1/2 background 
+
+  // Draw a pink house, with roof. 
+
+  windR = random(100);
+  windG = random(100);
+  windB = random(100);
+  fill( 255, 50, 300 );         // pink house 
+  rect( 150, 150, 200, 100 );       //body house 
+  fill(200, 150, 90); 
+  triangle( 150, 150, 350, 150, 245, 50 );       // Roof 
+  fill(windR, windG, windB);
+  rect(160, 160, 40, 30 );          ///house windows
+  rect(300, 160, 40, 30);
+  rect(230, 210, 40, 40);            //house door
+
+  ///Draw trees 
+  noStroke();
+  {
+    fill(49, 163, 39); 
+    ellipse(390, 113, 75, 85); //top of tree 
+    fill(190, 110, 20);
+    rect(418, 196, 20, 60);//trunk
+  }
+
+  {                              ///average size tree to the right
+    fill(49, 163, 39);
+    ellipse(450, 170, 50, 50);
+    fill(190, 110, 20);
+    rect(465, 217, 20, 40);
+  }
+  fill(49, 163, 39);      // smallest tree to the lft
+  ellipse(370, 190, 50, 40);
+  fill(190, 110, 20);
+  rect(389, 228, 15, 40);
+}
+
+//// Move creature
+void moveChee() {
+  //MOVE TOWARD GOLD
+  xChee = xChee + (xNugget-xChee) / 50;
+  yChee = yChee + (yNugget-yChee)/ 50;
+
+  //IF THE DISTANCE BETWEEN CHEE + GOLD IS < 50 THEN GOLD RESETS
+  if (dist(xChee, yChee, xNugget, yNugget) < 20) {  // both objects move in a patterslow no crazy
+    xNugget = random(0, 400);      //sets no specific coodinates,  
+    yNugget = random(height/2, 400);      //allows chee and gold to not go over horizon
+    xChee  =230;
+    yChee= horizon;
+
+
+
+    score = score + 7;                  //each touch is one point
+  }
+}
+
+
+void chee () {    ///move creature
+  // Starting position of creature. 
+  //// ZOOG: draw a creature at (x,y) 
+
+  fill(255 ); // white body of the creature 
+  rect( xChee, yChee, 50, 80 ); // Body (x,y,width,height) 
+  fill(100, 150, 60);
+  arc( xChee+10, yChee -20, 40, 40, PI, TWO_PI); // Head 
+  fill(255, 0, 0); // red eyes 
+  noStroke(); 
+
+  float x, y;
+  x= xChee;
+  y= yChee;
+
+  ellipse( x+15, y-25, 12, 12 ); // Eyes 
+  ellipse( x+35, y-25, 12, 12 ); 
+  fill(0); 
+  ellipse(x+15, y-25, 5, 5); //pupil
+  ellipse(x+35, y-25, 5, 5); //pupils 
+  stroke(0);
+  line(x+30, y-5, x+30, y-10); //nose 
+  line(x, y+10, x-10, y+20);          ///arms left to right
+  line(x+50, y+10, x+60, y+20);
+  line(x+10, y+80, x+5, y+100); //legs left->right 
+  line(x+40, y+80, x+35, y+100);
+  text ("Chee", xChee+10, yChee+40);
+}
+
+
+void nugget() {
+  //DRAW RANDOM VALUES OF COLOR for nugget
+  goldR = random (255);
+  goldG = random (255);
+  goldB = random (255);
+
+  //draw a gold nugget 
+  ellipseMode(CORNER); 
+  fill( goldR, goldG, goldB ); 
+  noStroke(); 
+  ellipse(xNugget, yNugget, 40, 20); //Gold fill
+  fill(255, 140, 0);
+  ellipse(xNugget+5, yNugget+5, 30, 10);
+}
+
+void sun() {
+  //the sun shape
+  fill(255, 200, 0);
+  ellipseMode(CORNER);
+  ellipse(sunx, suny, 60, 60);    //sun position
+  //sun motion
+  suny = sunH + (-50 * sin ((sunx+200) /(width/ PI )));     //sun arches though sky to horizon
+  if (sunx > width) {   //makes the sun move though the x axis
+    sunx=-10;
+    suny= random(210, 240); // moves he sun slighly up and down
+  }  
+  sunx= sunx +.5;
+}
+
+
+void cloud() {
+  noStroke(); // white
+  fill(255);
+  ellipse(cloud, 100, 40, 40);  //cloud moves right
+  ellipse(cloud+15, 120, 40, 40);
+  ellipse(cloud-10, 115, 40, 40);
+  ellipse(cloud+35, 100, 40, 40);
+  ellipse(cloud+45, 115, 40, 40);
+  if (cloud > width+40) {
+    cloud = 0;
+  }
+  cloud= cloud + .2;
+}
+
+void monster() {
+  fill(155);
+  ellipse(330, 300, 80, 80); /// face
+  //eyes
+  fill(255);
+  rect(345, 320, 10, 20);  // left eye
+  ellipse(380, 320, 20, 30);
+  fill(0);
+  rect(354, 378, 30, 30);  ///neck
+  arc(355, 345, 30, 30, 1, 90); //mouth
+  fill(255);
+  text("Jume", 355, 390);      /// Jume monster naem
+}
+
+void dog() {
+  //rect(80,400,25,15);
+  //rect(60,415,30,10);
+  //Monster stalks the hero, who hunts for gold
+  fill(200, 150, 90);
+  rect(200, 300, 45, 20);        //drawing the dog body
+  rect(245, 290, 20, 20);//head
+  fill(0);
+  ellipse(265, 305, 5, 5);      //nose
+  fill(0);
+  ellipse(195, 280, 5, 25);  //tail
+  stroke(0);
+  line(210, 320, 210, 330);
+  line(230, 320, 230, 330);
+} 
+
+void puppie() { 
+  fill(0, 150, 90);
+  rect(175, 325, 10, 10);        //drawing the dog head
+  rect(155, 330, 20, 10);//body
+  fill(0);
+  ellipse(185, 333, 3, 3);      //nose
+  fill(0);
+  ellipse(152, 322, 3, 10);  //tail
+  stroke(0);
+  line(160, 340, 160, 345);
+  line(170, 340, 170, 345);
+}
+
+void mousePressed() {
+
+  if (mousePressed)         // by pressing he mouse he nu moves there and Chee follows it
+    xNugget = mouseX;      // over the x axis
+  yNugget = mouseY;     /// over the y axis
+}
+void keyPressed() {
+  if (key == 'k') 
+    exit();
+}
+void message() {
+  // MESSAGES: title & aKKKuthor  
+  fill(255); 
+  text( "Project 1: Chee chasing gold.", 15, 15 ); 
+  text( "Kelly Hernandez, CST 112", 15, height-15 );
+  fill(0);
+  text (score, width/2, 250);
+}
+
+
+
