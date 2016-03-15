@@ -36,6 +36,7 @@ void draw() {
   dog();
   moveDog();
   puppie();
+  movePuppie();
 
 
   /* monster();*/
@@ -86,7 +87,7 @@ void scene() {
 
 //// Move creature
 void moveChee() {
-  //MOVE TOWARD GOLD
+  //MOVE TOWARD Chee
   xChee = xChee + (xNugget-xChee) / 50;
   yChee = yChee + (yNugget-yChee)/ 50;
 
@@ -209,8 +210,8 @@ void dog() {
 } 
 
 void moveDog() {
-    xDog = xDog + (xChee-xDog) / 50;
-  yDog = yDog + (yChee-yDog)/ 50;
+    xDog = xDog + (xChee-xDog) / 70;
+  yDog = yDog + (yChee-yDog)/ 70;
 
   
 }
@@ -228,6 +229,10 @@ void puppie() {
   line(xPuppie-5, yPuppie+15, xPuppie-5, yPuppie+20);
 }
 
+void movePuppie(){
+  xPuppie = xPuppie + (xDog-xPuppie) / 80;
+  yPuppie = yPuppie + (yDog-yPuppie)/ 80;
+}
 void mousePressed() {
 
   if (mousePressed)         // by pressing he mouse he nu moves there and Chee follows it
