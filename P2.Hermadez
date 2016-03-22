@@ -252,5 +252,5 @@ void message() {
   text( "Project 1: Chee chasing gold.", 15, 15 ); 
   text( "Kelly Hernandez, CST 112", 15, height-15 );
   fill(0);
-  text (score, width/2, 250);
+  text (score, 250, 250);
 }
