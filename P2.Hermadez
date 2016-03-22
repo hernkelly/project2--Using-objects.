@@ -17,10 +17,13 @@ float windG;
 float windB;
 float xDog=200,  yDog=300;
 float xPuppie=175, yPuppie=325;
+float xMonster=330;
+float yMonster=300;
+
 ///SET UP: Define screen size, set modes 
 void setup() {
-  size( 500, 500);
-  horizon=  height / 3;   //bounces off the horizon
+  size( 900, 700);
+  horizon=  height/3;   //bounces off the horizon
 }
 
 void draw() {
@@ -47,8 +50,8 @@ void scene() {
   rectMode(CORNER);
 
   // the sky
-  fill(62, 199, 50);
-  rect(0, 249, 500, 250, 2);       //x,y,width,height,radius 1/2 background 
+  fill(62, 199, 50);      //grass somehwat green
+  rect(0, horizon, width, height);       //x,y,width,height,radius 1/2 background 
 
   
 //SET RANDOM COLOS FOR THE WINDOWS
@@ -93,8 +96,8 @@ void moveChee() {
 
   //IF THE DISTANCE BETWEEN CHEE + GOLD IS < 50 THEN GOLD RESETS
   if (dist(xChee, yChee, xNugget, yNugget) < 20) {  // both objects move in a patterslow no crazy
-    xNugget = random(0, 400);      //sets no specific coodinates,  
-    yNugget = random(height/2, 400);      //allows chee and gold to not go over horizon
+    xNugget = random(0, 900);      //sets no specific coodinates,  
+    yNugget = random(height/2, 700);      //allows chee and gold to not go over horizon
     xChee  =230;
     yChee= horizon;
 
@@ -178,17 +181,17 @@ void cloud() {
   }
   cloud= cloud + .2;
 }
-
+//330,300
 void monster() {
   fill(155);
-  ellipse(330, 300, 80, 80); /// face
+  ellipse(xMonster, yMonster, 80, 80); /// face
   //eyes
   fill(255);
-  rect(345, 320, 10, 20);  // left eye
-  ellipse(380, 320, 20, 30);
+  rect(xMonster+15, yMonster+20, 10, 20);  // left eye
+  ellipse(xMonster+50, yMonster+20, 20, 30);
   fill(0);
-  rect(354, 378, 30, 30);  ///neck
-  arc(355, 345, 30, 30, 1, 90); //mouth
+  rect(xMonster+24, yMonster+78, 30, 30);  ///neck
+  arc(xMonster+25, yMonster+45, 30, 30, 1, 90); //mouth
   fill(255);
   text("Jume", 355, 390);      /// Jume monster naem
 }
