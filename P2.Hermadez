@@ -2,11 +2,9 @@
 ///Draw creature and add motion to the design
 float xChee=70, yChee=350, dxChee=.5, dyChee=.5;
 float horizon;
-float sunx= 430;
-float suny=100;
-float xNugget=125; 
-float yNugget=300;
-int score = 8;
+float sunx= 430; float suny=100;
+float xNugget=125; float yNugget=300;
+int score = 0;
 float cloud=100;
 float sunH= 100;
 float goldR;
@@ -28,16 +26,15 @@ void setup() {
 
 void draw() {
   background(100, 200, 200 );
+  action();
   sun();
   cloud();
   scene();
   chee();
   nugget();
   message();
-  moveChee();
   monster();
   dog();
-  moveDog();
   puppie();
   movePuppie();
 
@@ -89,25 +86,31 @@ void scene() {
 }
 
 //// Move creature
-void moveChee() {
-  //MOVE TOWARD Chee
-  xChee = xChee + (xNugget-xChee) / 50;
-  yChee = yChee + (yNugget-yChee)/ 50;
+void action() {
+  //CHEE CHASES the gold AT 50
+  xChee = xChee + (xNugget-xChee) / 50;      //this resest when chee reachest the gold at x and 
+  yChee = yChee + (yNugget-yChee)/ 50;        //and changes through and inteval of 50 no too fast same applies for why 
+  
+  ///Dog chases gold AT FRAME RATE 70
+  xDog = xDog + (xChee-xDog) / 70;
+  yDog = yDog + (yChee-yDog)/ 70;
 
+  /// MOnSTER CHASES HERO
+  xMonster= xMonster+ (xChee - xMonster)/frameRate;
+  yMonster= yMonster+ (yChee -yMonster)/frameRate;
+  
+  
   //IF THE DISTANCE BETWEEN CHEE + GOLD IS < 50 THEN GOLD RESETS
-  if (dist(xChee, yChee, xNugget, yNugget) < 20) {  // both objects move in a patterslow no crazy
+  if (dist(xChee, yChee, xNugget, yNugget) < 50) {  // both objects move in a patterslow no crazy
     xNugget = random(0, 900);      //sets no specific coodinates,  
     yNugget = random(height/2, 700);      //allows chee and gold to not go over horizon
-    xChee  =230;
+    xChee  =230;                          //RESETS BACK AT THE HOUSE DOOR
     yChee= horizon;
-
-
-
-    score = score + 7;                  //each touch is one point
+    score = score + 7;                  //each touch is increase by 7
   }
 }
 
-
+///the 28 of march
 void chee () {    ///move creature
   // Starting position of creature. 
   //// ZOOG: draw a creature at (x,y) 
@@ -155,6 +158,7 @@ void nugget() {
 
 void sun() {
   //the sun shape
+  noStroke();
   fill(255, 200, 0);
   ellipseMode(CORNER);
   ellipse(sunx, suny, 60, 60);    //sun position
@@ -193,7 +197,7 @@ void monster() {
   rect(xMonster+24, yMonster+78, 30, 30);  ///neck
   arc(xMonster+25, yMonster+45, 30, 30, 1, 90); //mouth
   fill(255);
-  text("Jume", 355, 390);      /// Jume monster naem
+  text("Jume", xMonster+25, yMonster+90);      /// Jume monster naem
 }
 //200,300
 void dog() {
@@ -201,27 +205,28 @@ void dog() {
   //rect(60,415,30,10);
   //Monster stalks the hero, who hunts for gold
   fill(200, 150, 90);
-  rect(xDog, yDog, 45, 20);        //drawing the dog body
-  rect(xDog+45, yDog-10, 20, 20);//head
+  rect(xDog, yDog, 45, 20);            //drawing the dog body
+  rect(xDog+45, yDog-10, 20, 20);      //head
   fill(0);
-  ellipse(xDog+65, yDog+5, 5, 5);      //nose
+  ellipse(xDog+55,yDog-5,3,3);      //pupils
   fill(0);
-  ellipse(xDog-5, yDog-20, 5, 25);  //tail
+  ellipse(xDog+65, yDog+5, 5, 5);        //nose
+  fill(0);
+  ellipse(xDog-5, yDog-20, 5, 25);      //tail
   stroke(0);
-  line(xDog+10, yDog+20, xDog+10, yDog+30);
+  line(xDog+10, yDog+20, xDog+10, yDog+30);      //feet
   line(xDog+30, yDog+20, xDog+30, yDog+30);
 } 
 
-void moveDog() {
-    xDog = xDog + (xChee-xDog) / 70;
-  yDog = yDog + (yChee-yDog)/ 70;
 
-  
-}
-//175,325
+
+//draw a puppie who follows the dog
 void puppie() { 
-  fill(0, 150, 90);
+  fill(0, 150, 90);  /// fill a dark green
   rect(xPuppie, yPuppie, 10, 10);        //drawing the dog head
+  fill(0);
+  ellipse(xPuppie+4,yPuppie+3,2,2);  // pupil
+  fill(0, 150, 90);
   rect(xPuppie-20, yPuppie+5, 20, 10);//body
   fill(0);
   ellipse(xPuppie+10, yPuppie+8, 3, 3);      //nose
@@ -249,8 +254,8 @@ void keyPressed() {
 void message() {
   // MESSAGES: title & aKKKuthor  
   fill(255); 
-  text( "Project 1: Chee chasing gold.", 15, 15 ); 
+  text( "Project 2: Chee chasing gold.", 15, 15 ); 
   text( "Kelly Hernandez, CST 112", 15, height-15 );
-  fill(0);
+  fill(255);
   text (score, 250, 250);
 }
