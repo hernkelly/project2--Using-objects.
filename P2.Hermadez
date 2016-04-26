@@ -1,27 +1,37 @@
 // Kelly hernandez
 ///Draw creature and add motion to the design
+String title="Project #2: using objects";
+String author="Kelly Hernandez; 04/20/16";
 float xChee=70, yChee=350, dxChee=.5, dyChee=.5;
+float dyPuppie=80;
+float dxPuppie=80;
 float horizon;
-float sunx= 430; float suny=100;
-float xNugget=125; float yNugget=300;
+float sunx= 430; 
+float suny=100;
 int score = 0;
+int Mscore=0;
 float cloud=100;
 float sunH= 100;
-float goldR;
-float goldG;
-float goldB;
 float windR;
 float windG;
 float windB;
-float xDog=200,  yDog=300;
+float xDog=200, yDog=300;
 float xPuppie=175, yPuppie=325;
 float xMonster=330;
 float yMonster=300;
+float dxDog, dyDog;
+float wDog ,hDog;
+
+Gold nugget;
 
 ///SET UP: Define screen size, set modes 
 void setup() {
   size( 900, 700);
   horizon=  height/3;   //bounces off the horizon
+  nugget = new Gold (height/2, width/2);
+}
+
+void reset() {
 }
 
 void draw() {
@@ -29,18 +39,18 @@ void draw() {
   action();
   sun();
   cloud();
+  reset();
   scene();
   chee();
-  nugget();
+  nugget.display();
+  nugget.chasenug();
   message();
-  monster();
+  monster(); 
   dog();
   puppie();
   movePuppie();
-
-
-  /* monster();*/
 }
+/* monster();*/
 
 void scene() {
 
@@ -50,8 +60,8 @@ void scene() {
   fill(62, 199, 50);      //grass somehwat green
   rect(0, horizon, width, height);       //x,y,width,height,radius 1/2 background 
 
-  
-//SET RANDOM COLOS FOR THE WINDOWS
+
+  //SET RANDOM COLOS FOR THE WINDOWS
   windR = random(100);
   windG = random(100);
   windB = random(100);
@@ -87,30 +97,27 @@ void scene() {
 
 //// Move creature
 void action() {
-  //CHEE CHASES the gold AT 50
-  xChee = xChee + (xNugget-xChee) / 50;      //this resest when chee reachest the gold at x and 
-  yChee = yChee + (yNugget-yChee)/ 50;        //and changes through and inteval of 50 no too fast same applies for why 
-  
-  ///Dog chases gold AT FRAME RATE 70
+  //CHEE CHASes dog
+
+
+  ///Dog chases chee AT FRAME RATE 70
   xDog = xDog + (xChee-xDog) / 70;
   yDog = yDog + (yChee-yDog)/ 70;
 
   /// MOnSTER CHASES HERO
-  xMonster= xMonster+ (xChee - xMonster)/frameRate;
-  yMonster= yMonster+ (yChee -yMonster)/frameRate;
-  
-  
-  //IF THE DISTANCE BETWEEN CHEE + GOLD IS < 50 THEN GOLD RESETS
-  if (dist(xChee, yChee, xNugget, yNugget) < 50) {  // both objects move in a patterslow no crazy
-    xNugget = random(0, 900);      //sets no specific coodinates,  
-    yNugget = random(height/2, 700);      //allows chee and gold to not go over horizon
-    xChee  =230;                          //RESETS BACK AT THE HOUSE DOOR
-    yChee= horizon;
-    score = score + 7;                  //each touch is increase by 7
+  xMonster= xMonster+ (xChee - xMonster)/80;
+  yMonster= yMonster+ (yChee -yMonster)/80;
+
+  if (dist(xMonster, yMonster, xChee, yChee) <75) {
+    xMonster= 750;
+    yMonster= horizon;
+    Mscore = Mscore + 20;
   }
+
+  //each touch is increase by 7
 }
 
-///the 28 of march
+///
 void chee () {    ///move creature
   // Starting position of creature. 
   //// ZOOG: draw a creature at (x,y) 
@@ -120,14 +127,15 @@ void chee () {    ///move creature
   fill(100, 150, 60);
   arc( xChee+10, yChee -20, 40, 40, PI, TWO_PI); // Head 
   fill(255, 0, 0); // red eyes 
+
   noStroke(); 
-float x, y;
+  float x, y;
   x= xChee;
   y= yChee;
-  
+
 
   ellipse( x+15, y-25, 12, 12 ); // Eyes 
-  ellipse( x+35, y-25, 12, 12 ); 
+  ellipse( x+35, y-25, 12, 12  ); 
   fill(0); 
   ellipse(x+15, y-25, 5, 5); //pupil
   ellipse(x+35, y-25, 5, 5); //pupils 
@@ -137,26 +145,68 @@ float x, y;
   line(x+50, y+10, x+60, y+20);
   line(x+10, y+80, x+5, y+100); //legs left->right 
   line(x+40, y+80, x+35, y+100);
+
+  fill(200, 155, 100);
+  noStroke();
+  rect(xChee, yChee, 50, 50);       //shirt
+  fill(0, 255, 0);
+  triangle( xChee+30, yChee, xChee+40, yChee+10, xChee+20, yChee+10 ); // collar
+  rect(xChee+20, yChee+10, 20, 20);  //folow up to h tie\
+  fill(0);
+  rect(xChee, yChee+50, 25, 30);
   text ("Chee", xChee+10, yChee+40);
 }
 
 
-void nugget() {
+class Gold {
+  float nugX, nugY; 
+  float w= 30, h=10 ; 
+  Gold(float nNugX, float nNugY) {
+    nugX=nNugX;
+    nugY=nNugY;
+  }
   //DRAW RANDOM VALUES OF COLOR for nugget
-  goldR = random (255);
-  goldG = random (255);
-  goldB = random (255);
 
-  //draw a gold nugget 
-  ellipseMode(CORNER); 
-  fill( goldR, goldG, goldB ); 
-  noStroke(); 
-  ellipse(xNugget, yNugget, 40, 20); //Gold fill
-  fill(255, 140, 0);
-  ellipse(xNugget+5, yNugget+5, 30, 10);
+
+  void display () 
+  {
+
+    float nugR; 
+    float nugG; 
+    float nugB;
+    nugR=random(205);
+    nugG=random(100);
+    nugB=random(50);
+    noStroke();
+
+
+    //makes it not visible
+    //draw a gold nugget 
+    fill(nugR, nugG, nugB); 
+    noStroke(); 
+    ellipse(nugX-5, nugY-5, w+10, h+10); //Gold fill
+    fill(nugR-75, nugG-50, nugR+25);
+    ellipse(nugX, nugY, w, h);
+  }
+
+  void chasenug() {
+    //IF THE DISTANCE BETWEEN CHEE + GOLD IS < 50 THEN GOLD RESETS
+    xChee=  xChee  +  (nugget.nugX- xChee) / 50;
+    yChee=  yChee  +  (nugget.nugY- yChee) / 50;
+    if (dist(xChee, yChee, nugX, nugY) < 50) {  // CHASING both objects move in a patterslow no crazy
+      //allows chee and gold to not go over horizon
+      nugget.nugX=  random( 1, width-100 );
+      nugget.nugY=  random( horizon+40, height-20 );
+      xChee  =230;                          //CHEE RESETS BACK AT THE HOUSE DOOR
+      yChee= horizon;
+      score = score + 1;
+    }
+  }
 }
 
-void sun() {
+
+void sun() 
+{
   //the sun shape
   noStroke();
   fill(255, 200, 0);
@@ -197,6 +247,7 @@ void monster() {
   rect(xMonster+24, yMonster+78, 30, 30);  ///neck
   arc(xMonster+25, yMonster+45, 30, 30, 1, 90); //mouth
   fill(255);
+  textSize(12);
   text("Jume", xMonster+25, yMonster+90);      /// Jume monster naem
 }
 //200,300
@@ -208,9 +259,9 @@ void dog() {
   rect(xDog, yDog, 45, 20);            //drawing the dog body
   rect(xDog+45, yDog-10, 20, 20);      //head
   fill(0);
-  ellipse(xDog+55,yDog-5,3,3);      //pupils
+  ellipse(xDog+55, yDog-5, wDog, hDog);      //pupils
   fill(0);
-  ellipse(xDog+65, yDog+5, 5, 5);        //nose
+  ellipse(xDog+65, yDog+5, wDog, hDog);        //nose
   fill(0);
   ellipse(xDog-5, yDog-20, 5, 25);      //tail
   stroke(0);
@@ -222,10 +273,17 @@ void dog() {
 
 //draw a puppie who follows the dog
 void puppie() { 
+  xPuppie = xPuppie + (xDog-xPuppie) / dxPuppie;
+  yPuppie = yPuppie + (yDog-yPuppie)/ dyPuppie;
+  if (xDog<0) {
+    xPuppie=0;
+  }
+
+
   fill(0, 150, 90);  /// fill a dark green
   rect(xPuppie, yPuppie, 10, 10);        //drawing the dog head
   fill(0);
-  ellipse(xPuppie+4,yPuppie+3,2,2);  // pupil
+  ellipse(xPuppie+4, yPuppie+3, 2, 2);  // pupil
   fill(0, 150, 90);
   rect(xPuppie-20, yPuppie+5, 20, 10);//body
   fill(0);
@@ -237,25 +295,25 @@ void puppie() {
   line(xPuppie-5, yPuppie+15, xPuppie-5, yPuppie+20);
 }
 
-void movePuppie(){
-  xPuppie = xPuppie + (xDog-xPuppie) / 80;
-  yPuppie = yPuppie + (yDog-yPuppie)/ 80;
+void movePuppie() {
 }
 void mousePressed() {
 
   if (mousePressed)         // by pressing he mouse he nu moves there and Chee follows it
-    xNugget = mouseX;      // over the x axis
-  yNugget = mouseY;     /// over the y axis
+    nugget.nugX = mouseX;      // over the x axis
+  nugget.nugY = mouseY;     /// over the y axis
 }
 void keyPressed() {
   if (key == 'k') 
     exit();
 }
-void message() {
-  // MESSAGES: title & aKKKuthor  
+void message() 
+{
+  // MESSAGES: title & author  
   fill(255); 
   text( "Project 2: Chee chasing gold.", 15, 15 ); 
   text( "Kelly Hernandez, CST 112", 15, height-15 );
   fill(255);
-  text (score, 250, 250);
+  text ("CHEE:" + score, 750, 30);
+  text(  "JUME:"+ Mscore, 750, 50);
 }
